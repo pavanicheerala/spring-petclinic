@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
-                git branch: 'JDK11MVN', url: 'https://github.com/GitPracticeRepo/spring-petclinic.git'
-                git branch: "${params.BRANCH_TO_BUILD}", url: 'https://github.com/GitPracticeRepo/spring-petclinic.git'
+                git branch: 'JDK11MVN', url: 'https://github.com/muthyalasaikiran/spring-petclinic.git'
+                git branch: "${params.BRANCH_TO_BUILD}", url: 'https://github.com/muthyalasaikiran/spring-petclinic.git'
             }
 
         }
