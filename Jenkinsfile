@@ -1,12 +1,22 @@
-node('JDK11MVN') {
-    stage('vcs') {
-        git branch: 'REL_INT_1.0', url: 'https://github.com/GitPracticeRepo/spring-petclinic.git'
-    }
-    stage("build") {
-        sh '/opt/apache-maven-3.8.7/bin/mvn package'
-    }
-    stage("archive results") {
-        junit '**/surefire-reports/*.xml'
+pipeline {
+    agent  { label 'OPENJDK-11-MAVEN' }
+    stages {
+        stage('vcs') {
+            steps {
+                git branch: 'REL_INT_1.0', url: 'https://github.com/GitPracticeRepo/spring-petclinic.git'
+            }
 
+        }
+        stage('build') {
+            steps {
+                sh '/opt/apache-maven-3.8.6/bin/mvn package'
+            }
+        }
+        stage('archive results') {
+            steps {
+                junit '**/surefire-reports/*.xml'
+            }
+        }
     }
+
 }
